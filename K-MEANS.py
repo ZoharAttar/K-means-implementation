@@ -130,19 +130,23 @@ def kmeans(dataset, K, CT=0.0001, I=30, Exp=10):
     ARI_avg = np.average(ARI) # ARI avg
     ARI_std = np.std(ARI) # ARI std
     return ("K = " + str(K) + " " + "CH:" + " " + "(" + str(CH_avg)+";"+str(CH_std)+")"+ " " + "ARI:" + " " + "(" + str(ARI_avg)+";"+str(ARI_std)+")")
+
 # Load the iris dataset from a CSV file into a Spark DataFrame.
 spark = SparkSession.builder.getOrCreate() # Create a Spark session
 dataset_name = "iris"
 irist_path = f'/FileStore/tables/{dataset_name}.csv'
 iris = spark.read.csv(irist_path, header= True)
+
 # Load the glass dataset from a CSV file into a Spark DataFrame.
 dataset_name = "glass"
 glass_path = f'/FileStore/tables/{dataset_name}.csv'
 glass = spark.read.csv(glass_path, header= True)
+
 # Load the parkinsons dataset from a CSV file into a Spark DataFrame.
 dataset_name = "parkinsons"
 parkinsons_path = f'/FileStore/tables/{dataset_name}.csv'
 parkinsons = spark.read.csv(parkinsons_path, header= True)
+
 # printing results
 data_sets = [iris,glass,parkinsons]
 data_names = ['iris', 'glass', 'parkinsons']
